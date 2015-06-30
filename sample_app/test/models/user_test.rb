@@ -1,63 +1,51 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-
-  def set_up
-    @user = User.new(name: "ward", email: "charlieward18@gmail.com", password: "1234", password_confirmation: "1234")
-  end
-
-  test 'user must be valid' do
-    assert @user.valid?
-  end
-
-  test 'name should be present' do
-    @user.name = ''
-    assert_not @user.valid?
-  end
-
-  test 'email should be present and unique' do
-    @user.email = ''
-    asser_not @user.valid?
-  end
-
-  test 'email not be longer then 255 characters' do
-    @user.email = "a"*255 + "@gmail.com"
-    assert_not @user.valid?
-  end
-
-  test 'email address should be valid' do
-    addresses = %w[hello@gmail.com charlieward18@gmail.com chuckyd3434@gmail.com asdf_casdf84@hotmail.com]
-    addresses.each do |valid_email|
-      @user.email = valid_email
-      assert @user.valid?, "#{valid_email.inspect}, is a valid email address"
-    end
-  end
-
-  test 'email test should reject invalid email addresses' do
-    invalid_emails = %w[user@gmail,com user@.com abba@com @hclair.gspot.com]
-    invalid_emails.each do |bad_email|
-      @user.email = bad_email
-      assert_not @user.valid?, "#{bad_email.inspect}, is not a valid email address"
-    end
-  end
-
-  test 'email address should be unique' do
-    dupped_user = @user.dup
-    dupped_user.email = @user.email.upcase
-    @user.save
-    assert_not dupped_user.valid?
-  end
-
-  test "user password should be non blank" do
-    @user.password = @user.password_confirmation = ' ' * 6
-    assert_not @user.valid?
-  end
-
-  test "password should have a minimum length" do
-    @user.password = @user.password_confirmation = "$"*5
-    assert_not @user.valid?
-  end
   # test "the truth" do
   #   assert true
   # end
+  def setup
+      @user = User.new(name: "Example User", email: "user@example.com",
+                       password: "foobar", password_confirmation: "foobar")
+    end
+
+ test "name should be present" do
+  @user.name = "     "
+    assert_not @user.valid?
+  end
+
+  test "email should be present" do
+     @user.email = "     "
+     assert_not @user.valid?
+   end
+
+ test "name should not be too long" do
+    @user.name = "a" * 51
+    assert_not @user.valid?
+  end
+
+  test "email should not be too long" do
+    @user.email = "a" * 244 + "@example.com"
+    assert_not @user.valid?
+  end
+
+  test "email validation should accept valid addresses" do
+     valid_addresses = %w[user@example.com USER@foo.COM A_US-ER@foo.bar.org
+                          first.last@foo.jp alice+bob@baz.cn]
+     valid_addresses.each do |valid_address|
+       @user.email = valid_address
+       assert @user.valid?, "#{valid_address.inspect} should be valid"
+     end
+   end
+
+   test "password should be present (nonblank)" do
+     @user.password = @user.password_confirmation = " " * 6
+     assert_not @user.valid?
+   end
+
+   test "password should have a minimum length" do
+     @user.password = @user.password_confirmation = "a" * 5
+     assert_not @user.valid?
+   end
+
 end
