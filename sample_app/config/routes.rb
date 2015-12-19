@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
 
+  resources :microposts
   get 'sessions/new'
-
   get 'sessions/new'
 
   resources :users
 
-  root 'application#hello'
+  root 'users#index'
 
   get 'help' => 'static_pages#help'
   get 'about' => 'static_pages#about'
