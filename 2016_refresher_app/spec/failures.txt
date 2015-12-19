@@ -1,4 +1,0 @@
-example_id                               | status | run_time        |
----------------------------------------- | ------ | --------------- |
-./spec/features/users_login_spec.rb[1:1] | passed | 0.08214 seconds |
-./spec/features/users_login_spec.rb[1:2] | passed | 0.93546 seconds |
