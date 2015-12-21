@@ -1,3 +1,4 @@
+# a user model for modelling users
 class User < ActiveRecord::Base
 attr_accessor :remember_token
 has_many :microposts
