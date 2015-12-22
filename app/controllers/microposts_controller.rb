@@ -1,3 +1,4 @@
+# this controller handles the CRUD methods for microposts
 class MicropostsController < ApplicationController
   before_action :set_micropost, only: [:show, :edit, :update, :destroy]
 
@@ -28,11 +29,20 @@ class MicropostsController < ApplicationController
 
     respond_to do |format|
       if @micropost.save
-        format.html { redirect_to @micropost, notice: 'Micropost was successfully created.' }
-        format.json { render :show, status: :created, location: @micropost }
+        format.html do
+          redirect_to @micropost,
+                      notice: 'Micropost was successfully created.'
+        end
+        format.json do
+          render :show, status: :created,
+                        location: @micropost
+        end
       else
         format.html { render :new }
-        format.json { render json: @micropost.errors, status: :unprocessable_entity }
+        format.json do
+          render json: @micropost.errors,
+                 status: :unprocessable_entity
+        end
       end
     end
   end
@@ -62,13 +72,14 @@ class MicropostsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_micropost
-      @micropost = Micropost.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def micropost_params
-      params.require(:micropost).permit(:content, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_micropost
+    @micropost = Micropost.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def micropost_params
+    params.require(:micropost).permit(:content, :user_id)
+  end
 end

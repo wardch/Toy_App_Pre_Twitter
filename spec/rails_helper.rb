@@ -5,8 +5,6 @@ require 'rspec/rails'
 require 'capybara/rspec'
 require 'capybara/rails'
 
-
-
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
@@ -46,5 +44,4 @@ RSpec.configure do |config|
   # This text file will persist the results of the last run test suite and save
   # the failed tests so they can be run with the --only-failures flag
   config.example_status_persistence_file_path = './spec/failures.txt'
-
 end
