@@ -15,7 +15,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:success] = 'Welcome to the sample app'
-      redirect_to @user
+      redirect_to @user # this is the equilvanet of doing a URL_redireect,
+    # not to be consfused with rendering a template
     else
       render 'new'
     end
@@ -24,6 +25,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:password, :password_confirmation, :email, :name)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end

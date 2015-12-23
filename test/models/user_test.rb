@@ -10,7 +10,7 @@ describe User, type: :model do
   it 'name should be present' do
     user.name = nil
     expect(user).not_to be_valid
-end
+  end
 
   it 'name should be present' do
     user.email = nil
