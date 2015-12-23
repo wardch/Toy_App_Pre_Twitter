@@ -16,8 +16,8 @@ example_id                                                | status  | run_time  
 ./spec/controllers/microposts_controller_spec.rb[1:6:2:2] | pending | 0.00099 seconds |
 ./spec/controllers/microposts_controller_spec.rb[1:7:1]   | pending | 0.00064 seconds |
 ./spec/controllers/microposts_controller_spec.rb[1:7:2]   | pending | 0.00069 seconds |
-./spec/features/users_login_spec.rb[1:1]                  | passed  | 0.03124 seconds |
-./spec/features/users_login_spec.rb[1:2]                  | failed  | 0.41053 seconds |
+./spec/features/users_login_spec.rb[1:1]                  | passed  | 0.34593 seconds |
+./spec/features/users_login_spec.rb[1:2]                  | passed  | 0.03929 seconds |
 ./spec/helpers/microposts_helper_spec.rb[1:1]             | pending | 0.00001 seconds |
 ./spec/models/micropost_spec.rb[1:1]                      | pending | 0.00001 seconds |
 ./spec/models/user_spec.rb[1:1]                           | passed  | 0.00361 seconds |
