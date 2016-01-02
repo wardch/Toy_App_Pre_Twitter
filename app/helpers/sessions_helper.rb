@@ -1,5 +1,4 @@
 module SessionsHelper
-
   def remember(user)
     user.remember
     cookies.permanent.signed[:user_id] = user.id
@@ -15,7 +14,7 @@ module SessionsHelper
       @current_user ||= User.find(user_id)
     elsif (user_id = cookies.permanent.signed[:user_id])
       user = User.find(user_id)
-      if user && user.authenticated?(cookies[:remember_token])
+      if user && user.authenticated?(:remember, cookies[:remember_token])
         login(user)
         @current_user = user
       end

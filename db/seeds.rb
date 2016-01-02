@@ -7,3 +7,22 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+user = User.create!(name: 'Charlie',
+                    email: 'charlie@charlie.com',
+                    password: 'charlie',
+                    password_confirmation: 'charlie',
+                    activated: true,
+                    activated_at: Time.zone.now)
+
+99.times do |n|
+  name = %w(charlie barley warly carly jiminez scooter perciville lorcan BroBradly).sample
+  email = "#{name}.#{n}@gmail.com"
+  password = 'password'
+  password_confirmation = 'password'
+  User.create!(name: name,
+               email: email,
+               password: password,
+               password_confirmation: password,
+               activated: true,
+               activated_at: Time.zone.now)
+end
