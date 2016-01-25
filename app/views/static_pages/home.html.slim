@@ -1,0 +1,8 @@
+- provide(:title, 'home')
+- if logged_in?
+  p suuup
+- else
+  div.center.jumbotron
+    h1 Static Pages Home Yoo
+    p This is the home page for the #{link_to 'Twitter-ish App', 'http://charlies-twitter-app.herokuapp.com'}
+    = link_to 'Sign Up Now', signup_path, class: 'btn btn-lg btn-primary'

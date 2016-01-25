@@ -15,6 +15,9 @@ gem 'capybara'
 gem 'rubocop', require: false
 gem 'awesome_print'
 gem 'slim'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
+gem 'faker'
 
 group :development, :test do
   gem 'sqlite3',     '1.3.9'

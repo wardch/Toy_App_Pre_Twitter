@@ -1,0 +1,13 @@
+- provide(:title, @user.name)
+div.row
+  aside.col-md-4
+    section.user_info
+      h1
+        = gravatar_for @user
+        = @user.name
+  - if @microposts.any?
+  div.col-md-8
+    h3 Microposts #{@user.microposts.count}
+    ol.microposts
+      = render @microposts
+    = will_paginate @microposts
