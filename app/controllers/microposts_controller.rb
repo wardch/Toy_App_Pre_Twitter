@@ -21,7 +21,6 @@ class MicropostsController < ApplicationController
     end
   end
 
-
   # DELETE /microposts/1
   # DELETE /microposts/1.json
   def destroy

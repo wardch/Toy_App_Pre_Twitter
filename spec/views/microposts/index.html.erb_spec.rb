@@ -3,15 +3,15 @@ require 'rails_helper'
 RSpec.describe 'microposts/index', type: :view do
   before(:each) do
     assign(:microposts, [
-      Micropost.create!(
-        content: 'MyText',
-        user_id: 1
-      ),
-      Micropost.create!(
-        content: 'MyText',
-        user_id: 1
-      )
-    ])
+             Micropost.create!(
+               content: 'MyText',
+               user_id: 1
+             ),
+             Micropost.create!(
+               content: 'MyText',
+               user_id: 1
+             )
+           ])
   end
 
   it 'renders a list of microposts' do

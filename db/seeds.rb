@@ -32,5 +32,5 @@ users = User.take(6)
 
 50.times do
   content = Faker::Hipster.sentence(5)
-  users.each { |user| user.microposts.create!(content: content)}
+  users.each { |user| user.microposts.create!(content: content) }
 end
