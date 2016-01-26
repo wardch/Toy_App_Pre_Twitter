@@ -1,7 +1,7 @@
 # a user model for modelling users
 class User < ActiveRecord::Base
   attr_accessor :remember_token, :activation_token, :reset_token
-  has_many :microposts, dependent: :destroy 
+  has_many :microposts, dependent: :destroy
 
   before_save :downcase_email
   before_create :create_activation_token
@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true 
 
   # Returns the hash digest of the given string.
   def self.digest(string)
