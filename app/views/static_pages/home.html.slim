@@ -1,6 +1,11 @@
 - provide(:title, 'home')
 - if logged_in?
-  p suuup
+  div.row
+    aside.col-md-4
+      section.user_info
+      = render 'shared/user_info'
+      section.micropost_form
+      = render 'shared/micropost_form'
 - else
   div.center.jumbotron
     h1 Static Pages Home Yoo

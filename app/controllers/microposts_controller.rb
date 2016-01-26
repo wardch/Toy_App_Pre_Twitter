@@ -16,7 +16,7 @@ class MicropostsController < ApplicationController
         end
       else
         flash[:danger] = 'Micropost did not save'
-        redirect_to root_url
+        render 'static_pages/home'
       end
     end
   end
