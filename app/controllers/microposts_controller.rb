@@ -2,6 +2,7 @@
 class MicropostsController < ApplicationController
   before_action :set_micropost, only: [:destroy]
   before_action :logged_in_user, only: [:create, :destroy]
+  before_action :correct_user, only: :destroy
 
   def create
     @micropost = current_user.microposts.build(micropost_params)
@@ -9,6 +10,7 @@ class MicropostsController < ApplicationController
         flash[:success] = 'Congrats your micropost saved'
         redirect_to root_url
     else
+      @feed_items = []
       flash[:danger] = 'Micropost did not save'
       render 'static_pages/home'
     end
@@ -18,10 +20,8 @@ class MicropostsController < ApplicationController
   # DELETE /microposts/1.json
   def destroy
     @micropost.destroy
-    respond_to do |format|
-      format.html { redirect_to microposts_url, notice: 'Micropost was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash[:success] = 'Congrats micropost deleted'
+    redirect_to request.referrer || root_url
   end
 
   private
@@ -34,5 +34,10 @@ class MicropostsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def micropost_params
     params.require(:micropost).permit(:content, :user_id)
+  end
+
+  def correct_user
+    micropost = current_user.microposts.find_by(id: params[:id])
+    redirect_to root_url if micropost.nil?
   end
 end

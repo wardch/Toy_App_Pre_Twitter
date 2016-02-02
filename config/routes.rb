@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get 'sessions/new'
   get 'sessions/new'
 
-  resources :microposts, only: [:create, :show]
+  resources :microposts, only: [:create, :show, :destroy]
 
   resources :users
 
