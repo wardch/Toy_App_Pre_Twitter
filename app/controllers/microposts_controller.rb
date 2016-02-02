@@ -5,19 +5,12 @@ class MicropostsController < ApplicationController
 
   def create
     @micropost = current_user.microposts.build(micropost_params)
-    respond_to do |format|
-      if @micropost.save
+    if @micropost.save
         flash[:success] = 'Congrats your micropost saved'
-        format.html do
-          redirect_to root_url
-        end
-        format.json do
-          redirect_to root_url
-        end
-      else
-        flash[:danger] = 'Micropost did not save'
-        render 'static_pages/home'
-      end
+        redirect_to root_url
+    else
+      flash[:danger] = 'Micropost did not save'
+      render 'static_pages/home'
     end
   end
 
