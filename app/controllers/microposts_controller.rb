@@ -10,6 +10,7 @@ class MicropostsController < ApplicationController
         flash[:success] = 'Congrats your micropost saved'
         redirect_to root_url
     else
+      fail
       @feed_items = []
       flash[:danger] = 'Micropost did not save'
       render 'static_pages/home'
