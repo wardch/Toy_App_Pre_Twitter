@@ -5,8 +5,11 @@ div.row
       h1
         = gravatar_for @user
         = @user.name
+    section.stats
+      = render 'shared/stats'
   - if @microposts.any?
   div.col-md-8
+  = render 'follow_form' if logged_in?
     h3 Microposts #{@user.microposts.count}
     ol.microposts
       = render @microposts

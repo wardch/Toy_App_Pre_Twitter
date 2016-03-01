@@ -34,3 +34,12 @@ users = User.take(6)
   content = Faker::Hipster.sentence(5)
   users.each { |user| user.microposts.create!(content: content) }
 end
+
+# code to mock following
+users = User.all
+user = users.first
+following = users[3..50]
+followers = users[4..40]
+
+following.each {|followed| user.follow(followed)}
+followers.each {|follower| follower.follow(user)}

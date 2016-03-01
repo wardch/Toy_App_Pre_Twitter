@@ -19,9 +19,14 @@ Rails.application.routes.draw do
 
   resources :microposts, only: [:create, :show, :destroy]
 
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
 
   resources :account_activations, only: [:edit]
 
   resources :password_resets, only: [:create, :new, :edit, :update]
+  resources :relationships, only: [:create, :destroy]
 end
